@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimpleAFSExtractor"
         mc:Ignorable="d"
-        Title="sAFSe 1.0" Height="170" Width="150" MaxHeight="200" MaxWidth="200" MinHeight="170" MinWidth="150" ResizeMode="NoResize">
+        Title="sAFSe 1.0.1" Height="200" Width="200" MaxHeight="200" MaxWidth="200" MinHeight="200" MinWidth="200" ResizeMode="NoResize">
     <StackPanel VerticalAlignment="Center">
-        <Button Content="Open" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,0,10" VerticalAlignment="Stretch" Height="35" Width="65" Click="ButtonOpen_Click"/>
+        <Button Content="Open" HorizontalAlignment="Stretch" Margin="0,0,0,10" VerticalAlignment="Stretch" Height="35" Width="100" Click="ButtonOpen_Click"/>
         <Label Name="filePicked" Content="No AFS loaded" HorizontalAlignment="Center"/>
-        <Button Name="extractButton"  Content="Extract" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,10,0,0" VerticalAlignment="Stretch" Height="35" Width="65" IsEnabled="False" Click="ButtonExtract_Click"/>
+        <CheckBox Name="indexExportCheckbox" Content="Add index to name" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Stretch" IsChecked="True" />
+        <Button Name="extractButton" Content="Extract" HorizontalAlignment="Stretch" Margin="0,10,0,0" VerticalAlignment="Stretch" Height="35" Width="100" IsEnabled="False" Click="ButtonExtract_Click"/>
     </StackPanel>
 </Window>

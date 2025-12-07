@@ -4,9 +4,7 @@ using System.Linq;
 using System.Windows;
 
 namespace SimpleAFSExtractor {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window {
 
         AfsArchive currentAfs;
@@ -43,8 +41,14 @@ namespace SimpleAFSExtractor {
                 return;
             }
             if (dialog.SelectedPath != "") {
-                for (int i = 0; i < currentAfs.Files.Count(); i++) {
-                    File.WriteAllBytes(dialog.SelectedPath + "\\\\" + i + "_" + currentAfs.Files[i].Name, currentAfs.Files[i].Data);
+                if (indexExportCheckbox.IsChecked.Value) {
+                    for (int i = 0; i < currentAfs.Files.Count(); i++) {
+                        File.WriteAllBytes(dialog.SelectedPath + "\\\\" + i + "_" + currentAfs.Files[i].Name, currentAfs.Files[i].Data);
+                    }
+                } else {
+                    for (int i = 0; i < currentAfs.Files.Count(); i++) {
+                        File.WriteAllBytes(dialog.SelectedPath + "\\\\" + currentAfs.Files[i].Name, currentAfs.Files[i].Data);
+                    }
                 }
                 MessageBox.Show("Extraction completed", "Simple AFS Extractor");
             }
