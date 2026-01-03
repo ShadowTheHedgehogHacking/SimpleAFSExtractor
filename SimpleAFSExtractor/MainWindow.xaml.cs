@@ -43,11 +43,35 @@ namespace SimpleAFSExtractor {
             if (dialog.SelectedPath != "") {
                 if (indexExportCheckbox.IsChecked.Value) {
                     for (int i = 0; i < currentAfs.Files.Count(); i++) {
-                        File.WriteAllBytes(dialog.SelectedPath + "\\\\" + i + "_" + currentAfs.Files[i].Name, currentAfs.Files[i].Data);
+                        if (wavFormatExportCheckbox.IsChecked.Value)
+                        {
+                            var decoder = new VGAudio.Containers.Adx.AdxReader();
+                            var audio = decoder.Read(currentAfs.Files[i].Data);
+                            var writer = new VGAudio.Containers.Wave.WaveWriter();
+                            FileStream stream = new FileStream(dialog.SelectedPath + "\\\\" + i + "_" + currentAfs.Files[i].Name.Replace(".adx", ".wav"), FileMode.OpenOrCreate);
+                            writer.WriteToStream(audio, stream);
+                            stream.Close();
+                        }
+                        else
+                        {
+                            File.WriteAllBytes(dialog.SelectedPath + "\\\\" + i + "_" + currentAfs.Files[i].Name, currentAfs.Files[i].Data);
+                        }
                     }
                 } else {
                     for (int i = 0; i < currentAfs.Files.Count(); i++) {
-                        File.WriteAllBytes(dialog.SelectedPath + "\\\\" + currentAfs.Files[i].Name, currentAfs.Files[i].Data);
+                        if (wavFormatExportCheckbox.IsChecked.Value)
+                        {
+                            var decoder = new VGAudio.Containers.Adx.AdxReader();
+                            var audio = decoder.Read(currentAfs.Files[i].Data);
+                            var writer = new VGAudio.Containers.Wave.WaveWriter();
+                            FileStream stream = new FileStream(dialog.SelectedPath + "\\\\" + currentAfs.Files[i].Name.Replace(".adx", ".wav"), FileMode.OpenOrCreate);
+                            writer.WriteToStream(audio, stream);
+                            stream.Close();
+                        }
+                        else
+                        {
+                            File.WriteAllBytes(dialog.SelectedPath + "\\\\" + currentAfs.Files[i].Name, currentAfs.Files[i].Data);
+                        }
                     }
                 }
                 MessageBox.Show("Extraction completed", "Simple AFS Extractor");

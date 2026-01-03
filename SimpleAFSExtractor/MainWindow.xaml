@@ -10,6 +10,7 @@
         <Button Content="Open" HorizontalAlignment="Stretch" Margin="0,0,0,10" VerticalAlignment="Stretch" Height="35" Width="100" Click="ButtonOpen_Click"/>
         <Label Name="filePicked" Content="No AFS loaded" HorizontalAlignment="Center"/>
         <CheckBox Name="indexExportCheckbox" Content="Add index to name" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Stretch" IsChecked="True" />
-        <Button Name="extractButton" Content="Extract" HorizontalAlignment="Stretch" Margin="0,10,0,0" VerticalAlignment="Stretch" Height="35" Width="100" IsEnabled="False" Click="ButtonExtract_Click"/>
+        <CheckBox Name="wavFormatExportCheckbox" Content="Convert to .wav" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Stretch" IsChecked="False" />
+        <Button Name="extractButton" Content="Extract" HorizontalAlignment="Stretch" Margin="0,5,0,0" VerticalAlignment="Stretch" Height="35" Width="100" IsEnabled="False" Click="ButtonExtract_Click"/>
     </StackPanel>
 </Window>
